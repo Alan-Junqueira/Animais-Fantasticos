@@ -16,11 +16,14 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      document.documentElement.className += ' js'
+    </script>
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <title>Animais Fantasticos</title>
   </head>
   <body>
-    <nav class="menu">
+    <nav class="menu js-menu">
       <ul>
         <li><a href="#animais">Animais</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -30,7 +33,7 @@
     </nav>
     <section class="grid-section animais" id="animais">
       <h1 class="titulo">Animais Fantasticos</h1>
-      <ul class="animais-lista">
+      <ul class="animais-lista js-tabmenu">
         <li>
           <img src="./img/imagem1.jpg" alt="" />
         </li>
@@ -50,7 +53,7 @@
           <img src="./img/imagem6.jpg" alt="" />
         </li>
       </ul>
-      <div class="animais-descricao">
+      <div class="animais-descricao js-tabcontent">
         <section>
           <h2>Raposa</h2>
           <p>
@@ -182,7 +185,7 @@
 
     <section class="grid-section faq" id="faq">
       <h1 class="titulo">FAQ</h1>
-      <dl class="faq-lista">
+      <dl class="faq-lista js-accordion">
         <dt>Qual a idade dos animais?</dt>
         <dd>
           As raposas são animais mamíferos e onívoros pertencentes à família
@@ -224,6 +227,6 @@
     <footer class="copy">
       <p>Todos os direitos reservados.</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

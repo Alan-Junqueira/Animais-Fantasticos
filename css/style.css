@@ -15,6 +15,10 @@ dl {
   padding: 0;
 }
 
+html.textomaior {
+  font-size: 150%;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -54,7 +58,7 @@ quinta linha: encostada no lado direito da tela.
 
 .menu ul li a {
   display: block;
-  padding: 10px;
+  padding: 15px 10px;
   margin-right: 10px;
   color: #222;
   text-decoration: none;
@@ -119,6 +123,10 @@ quinta linha: encostada no lado direito da tela.
   grid-column: 2;
 }
 
+.animais-lista li {
+  cursor: pointer;
+}
+
 /*Estilização da barra de scroll (não funciona em todos navegadores)*/
 .animais-lista::-webkit-scrollbar {
   width: 18px;
@@ -159,7 +167,7 @@ quinta linha: encostada no lado direito da tela.
 
 .faq-lista dt::before {
   content: '';
-  display:inline-block;
+  display: inline-block;
   width: 20px;
   height: 10px;
   margin-right: 10px;
@@ -173,7 +181,7 @@ quinta linha: encostada no lado direito da tela.
 }
 
 .mapa {
-  grid-column: 2; 
+  grid-column: 2;
 }
 
 .dados {
@@ -187,7 +195,7 @@ quinta linha: encostada no lado direito da tela.
 
 .dados li::before {
   content: '';
-  display:inline-block;
+  display: inline-block;
   width: 20px;
   height: 10px;
   margin-right: 10px;
@@ -197,7 +205,7 @@ quinta linha: encostada no lado direito da tela.
 .copy {
   grid-column: 3/5;
   margin-bottom: 2rem;
-  background: #fb5
+  background: #fb5;
 }
 
 .copy p {
@@ -206,36 +214,84 @@ quinta linha: encostada no lado direito da tela.
   font-weight: bold;
 }
 
-@media (max-width: 700) {
+@media (max-width: 700px) {
   body {
     grid-template-columns: 1fr;
   }
-  .menu, .grid-section, .copy {
+  .menu,
+  .grid-section,
+  .copy {
     grid-column: 1;
   }
-
   .grid-section {
     grid-template-columns: 100px 1fr;
     grid-gap: 10px;
   }
-
   .animais-lista {
     grid-column: 1;
   }
-
-  .faqlista, .dados, .mapa {
+  .faq-lista,
+  .dados,
+  .mapa {
     grid-column: 1 / 3;
   }
-
   .grid-section h1 {
     font-size: 3rem;
   }
-
   .menu {
-    margin-top: 0;
+    margin-top: 0px;
+  }
+  .copy {
+    margin-bottom: 0px;
+  }
+}
+
+.js .js-tabcontent section {
+  display: none;
+}
+
+.js-tabcontent section.ativo {
+  display: block !important;
+  animation: show 0.5s forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js .js-accordion dd {
+  display: none;
+}
+
+.js-accordion dt::after {
+  content: '↴';
+  margin-left: 10px;
+}
+
+.js-accordion dt.ativo::after {
+  content: '⬏';
+}
+
+.js-accordion dd.ativo {
+  display: block;
+  animation: slideDown .5s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
   }
 
-  .copy {
-    margin-bottom: 0;
+  to {
+    opacity: 1;
+    max-height: 200px;
   }
 }
