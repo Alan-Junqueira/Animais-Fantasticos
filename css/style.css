@@ -1,22 +1,14 @@
 body,
 h1,
 h2,
-h3,
-h4,
-h5,
-h6,
 ul,
 li,
 p,
 dd,
 dt,
 dl {
-  margin: 0;
-  padding: 0;
-}
-
-html.textomaior {
-  font-size: 150%;
+  margin: 0px;
+  padding: 0px;
 }
 
 img {
@@ -33,18 +25,11 @@ body {
   color: #222;
   -webkit-font-smoothing: antialiased;
   display: grid;
-  grid-template-columns: 1fr 130px minmax(300px, 800px) 1fr;
+  grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
 }
 
 .menu {
-  grid-column: 3/5;
-  /*Da terceira colula até a quinta coluna, só tem quatro colunas definidas, mas o que é contato são as linhas que separam a coluna, sendo assim:
-primeira linha: enconstada no lado esquerdo da tela;
-segunda linha: entre a coluna 1 e 2;
-terceira linha: entra a coluna 2 e 3;
-quarta linha: entre a coluna 3 e 4 (umtima coluna);
-quinta linha: encostada no lado direito da tela.
-*/
+  grid-column: 3 / 5;
   margin-top: 2rem;
   margin-bottom: 2rem;
   background: #fb5;
@@ -56,9 +41,9 @@ quinta linha: encostada no lado direito da tela.
   padding: 10px;
 }
 
-.menu ul li a {
+.menu li a {
   display: block;
-  padding: 15px 10px;
+  padding: 10px;
   margin-right: 10px;
   color: #222;
   text-decoration: none;
@@ -70,13 +55,10 @@ quinta linha: encostada no lado direito da tela.
 }
 
 .grid-section {
-  grid-column: 2/4;
+  grid-column: 2 / 4;
   width: 100%;
-
   box-sizing: border-box;
   padding: 10px;
-  /*box-sizing não muda, apenas adiciona o padding.*/
-
   display: grid;
   grid-template-columns: 90px 300px 1fr;
   grid-gap: 20px;
@@ -84,12 +66,12 @@ quinta linha: encostada no lado direito da tela.
 }
 
 .titulo {
-  font-family: 'Playfair Display SC';
+  font-family: 'Playfair Display SC', georgia;
   font-size: 6rem;
   line-height: 1;
-  font-weight: normal;
+  font-weight: 400;
   margin-bottom: 1rem;
-  grid-column: 1/4;
+  grid-column: 1 / 4;
 }
 
 .animais h2 {
@@ -111,7 +93,7 @@ quinta linha: encostada no lado direito da tela.
 }
 
 .animais p {
-  font-family: Helvetica, arial;
+  font-family: Helvetica, Arial;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
@@ -119,7 +101,6 @@ quinta linha: encostada no lado direito da tela.
 .animais-lista {
   height: 370px;
   overflow-y: scroll;
-  /*O que passar o eixo Y, coloque um scroll*/
   grid-column: 2;
 }
 
@@ -127,20 +108,16 @@ quinta linha: encostada no lado direito da tela.
   cursor: pointer;
 }
 
-/*Estilização da barra de scroll (não funciona em todos navegadores)*/
 .animais-lista::-webkit-scrollbar {
   width: 18px;
 }
 
-/*barra do scroll bar*/
 .animais-lista::-webkit-scrollbar-thumb {
   background: #fb5;
   border-left: 4px solid #faf6ed;
   border-right: 4px solid #faf6ed;
-  border-radius: 8px;
 }
 
-/*Parte de trás do scroll */
 .animais-lista::-webkit-scrollbar-track {
   background: #faf6ed;
 }
@@ -175,7 +152,7 @@ quinta linha: encostada no lado direito da tela.
 }
 
 .faq-lista dd {
-  font-family: Helvetica, arial, helvetica;
+  font-family: Helvetica, Arial;
   margin-bottom: 0.5rem;
   margin-left: 30px;
 }
@@ -190,7 +167,7 @@ quinta linha: encostada no lado direito da tela.
 
 .dados li {
   margin-bottom: 1rem;
-  font-family: Helvetica, arial, helvetica;
+  font-family: Helvetica, Arial;
 }
 
 .dados li::before {
@@ -246,16 +223,23 @@ quinta linha: encostada no lado direito da tela.
   }
 }
 
-.js .js-tabcontent section {
+.js [data-tab='content'] section {
   display: none;
 }
 
-.js-tabcontent section.ativo {
+[data-tab='content'] section.ativo {
   display: block !important;
-  animation: show 0.5s forwards;
 }
 
-@keyframes show {
+[data-tab='content'] section.ativo.show-right {
+  animation: show-right 0.5s forwards;
+}
+
+[data-tab='content'] section.ativo.show-down {
+  animation: show-down 0.5s forwards;
+}
+
+@keyframes show-right {
   from {
     opacity: 0;
     transform: translate3d(-30px, 0, 0);
@@ -266,22 +250,33 @@ quinta linha: encostada no lado direito da tela.
   }
 }
 
-.js .js-accordion dd {
+@keyframes show-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js [data-anime='accordion'] dd {
   display: none;
 }
 
-.js-accordion dt::after {
-  content: '↴';
+[data-anime='accordion'] dt::after {
+  content: '⬎';
   margin-left: 10px;
 }
 
-.js-accordion dt.ativo::after {
+[data-anime='accordion'] dt.ativo::after {
   content: '⬏';
 }
 
-.js-accordion dd.ativo {
+[data-anime='accordion'] dd.ativo {
   display: block;
-  animation: slideDown .5s forwards;
+  animation: slideDown 0.5s forwards;
 }
 
 @keyframes slideDown {
@@ -289,9 +284,19 @@ quinta linha: encostada no lado direito da tela.
     opacity: 0;
     max-height: 0;
   }
-
   to {
-    opacity: 1;
     max-height: 200px;
+    opacity: 1;
   }
+}
+
+.js [data-anime='scroll'] {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: 0.3s;
+}
+
+.js [data-anime='scroll'].ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
