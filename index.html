@@ -17,8 +17,22 @@
   <body>
     <div class="grid-container">
       <nav class="menu" data-menu="suave">
-        <ul>
+        <!--aria-controls se conecta com o id-->
+        <button data-menu="button" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <ul data-menu="list" id="menu">
           <li><a href="#animais">Animais</a></li>
+          <li data-dropdown>
+            <a href="#sobre.html">Sobre</a>
+            <!--dropdown-menu é um submenu(menu dentro de outro menu.).-->
+            <ul class="dropdown-menu">
+              <li><a href="empresa.html">A Empresa</a></li>
+              <li><a href="equipe.html">Equipe</a></li>
+              <li><a href="socios.html">Sócios</a></li>
+              <li><a href="investidores.html">Investidores</a></li>
+            </ul>
+          </li>
           <li><a href="#faq">Faq</a></li>
           <li><a href="#contato">Contato</a></li>
           <li><a data-modal="abrir" href="login.html">Login →</a></li>
@@ -205,9 +219,35 @@
         </dl>
       </section>
 
+      <section class="grid-section numeros" data-anime="scroll">
+        <h1 class="titulo">Números</h1>
+        <div class="numeros-grid">
+          <div class="numero-animal">
+            <h3>Lobos</h3>
+            <span data-numero>4874</span>
+          </div>
+          <div class="numero-animal">
+            <h3>Raposas</h3>
+            <span data-numero>5374</span>
+          </div>
+          <div class="numero-animal">
+            <h3>Esquilos</h3>
+            <span data-numero>12340</span>
+          </div>
+          <div class="numero-animal">
+            <h3>Ursos</h3>
+            <span data-numero>230</span>
+          </div>
+        </div>
+      </section>
+
       <section class="grid-section contato" data-anime="scroll" id="contato">
         <h1 class="titulo">Contato</h1>
-        <div class="mapa">
+        <div
+          class="mapa"
+          data-tooltip
+          aria-label="Endereço próximo ao estacionamento."
+        >
           <img src="img/mapa.png" />
         </div>
         <ul class="dados">
@@ -235,6 +275,6 @@
         </form>
       </div>
     </section>
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="./js/script.js"></script>
   </body>
 </html>
