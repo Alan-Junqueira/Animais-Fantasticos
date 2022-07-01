@@ -9,6 +9,7 @@ import Funcionamento from './modules/funcionamento.js';
 import fetchAnimais from './modules/fetch-animais.js';
 import FetchBitcoin from './modules/fetch-bitcoin.js';
 import ScrollAnima from './modules/scroll-anima.js';
+import SlideNav from './modules/slide.js';
 
 // '[data-menu="suave"] a[href^="#"]'
 /*
@@ -40,6 +41,9 @@ const modal = new Modal(
 );
 modal.init();
 
+const funcionamento = new Funcionamento()
+funcionamento.init()
+
 const toolTip = new ToolTip('[data-tooltip]');
 toolTip.init();
 
@@ -52,8 +56,11 @@ dropDownmenu.init();
 const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]');
 menuMobile.init();
 
-const funcionamento = new Funcionamento('[data-semana]', 'aberto');
-funcionamento.init();
-
 fetchAnimais('./json/animaisapi.json', '.numeros-grid');
 FetchBitcoin('https://blockchain.info/ticker', '.btc-preco');
+
+const slide = new SlideNav('.slide', '.slide-wrapper');
+slide.init();
+
+
+slide.addControl('.custon-controls'); // se remover o .custon-controls, volta pro padrão
